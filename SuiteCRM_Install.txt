@@ -1,0 +1,28 @@
+Cài PHP version 8.3
+
+cd /var/www/ (apache) --> skip, use  nginx -> container port
+Running the CLI installer
+./bin/console suitecrm:app:install -u "hasaki" -p "hasaki" -U "db_user" -P "db_password" -H "db_host" -Z "db_port" -N "db_name" -S "site_url" -d "demo_data"
+#Example
+./bin/console suitecrm:app:install -u "admin" -p "pass" -U "root" -P "dbpass" -H "mariadb" -N "suitecrm" -S "https://yourcrm.com/" -d "yes"
+
+Tạo folder chứa project rồi cd vào (chỗ này cần phải là folder thuộc dạng PHP MyAdmin ???)
+sudo www-data wget https://suitecrm.com/download/165/suite88/565090/suitecrm-8-8-0.zip
+sudo www-data unzip suitecrm-8-8-0.zip
+sudo www-data find . -type d -not -perm 2755 -exec chmod 2755 {} \;
+sudo www-data find . -type f -not -perm 0644 -exec chmod 0644 {} \;
+sudo www-data find . ! -user www-data -exec chown www-data:www-data {} \;
+sudo www-data chmod +x bin/console
+
+Chay 1 trong 2 lenh:
+./bin/console suitecrm:app:install (No' hoi? thong tin)
+./bin/console suitecrm:app:install -u "admin_username" -p "admin_password" -U "db_user" -P "db_password" -H "db_host" -N "db_name" -S "site_url" -d "demo_data" (Tu. sua? lai. thong tin cho dung', lên day tham khao? may cai params: https://docs.suitecrm.com/8.x/admin/installation-guide/running-the-cli-installer/)
+
+sudo www-data find . -type d -not -perm 2755 -exec chmod 2755 {} \;
+sudo www-data find . -type f -not -perm 0644 -exec chmod 0644 {} \;
+sudo www-data find . ! -user www-data -exec chown www-data:www-data {} \;
+sudo www-data chmod +x bin/console
+
+You should now be able to access the instance at the https://<your-suite-crm-instance-path>;
+
+Chay deo dc thi zo day debug: https://docs.suitecrm.com/8.x/admin/installation-guide/running-the-cli-installer/

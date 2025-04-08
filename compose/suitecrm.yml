@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  suitecrm:
+    image: bitnami/suitecrm:latest
+    container_name: hasaki-suitecrm
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - suitecrm_data:/bitnami/suitecrm
+      - ../suitecrm:/suitecrm-custom
+    environment:
+      - SUITECRM_DATABASE_HOST=mysql
+      - SUITECRM_DATABASE_PORT_NUMBER=3306
+      - SUITECRM_DATABASE_USER=hasaki
+      - SUITECRM_DATABASE_PASSWORD=hasaki
+      - SUITECRM_DATABASE_NAME=hasaki
+      - ALLOW_EMPTY_PASSWORD=no
+    networks:
+      - hasaki-network
+    depends_on:
+      - mysql
+
+volumes:
+  suitecrm_data:
+    driver: local
+
+networks:
+  hasaki-network:
+    driver: bridge

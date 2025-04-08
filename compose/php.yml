@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  php:
+    image: php:8.1-fpm
+    container_name: hasaki-php
+    restart: unless-stopped
+    volumes:
+      - ../:/var/www/html
+      - ../suitecrm:/var/www/suitecrm
+    networks:
+      - hasaki-network
+    environment:
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_MAX_EXECUTION_TIME=120
+      - PHP_POST_MAX_SIZE=100M
+      - PHP_UPLOAD_MAX_FILESIZE=100M
+
+networks:
+  hasaki-network:
+    driver: bridge
