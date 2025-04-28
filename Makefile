@@ -5,7 +5,7 @@ EXEC := /bin/bash
 
 .PHONY: install
 install: ## Install the environment and docker images
-	# @cp -i .env.docker.example .env
+	@cp -i .env.docker.example .env
 	@docker-compose $(COMPOSE_FILES) build
 	@echo "Done"
 	@echo "Please update your local configuration at .env"
