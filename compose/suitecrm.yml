@@ -5,6 +5,7 @@ services:
     image: bitnami/suitecrm:latest
     container_name: hasaki-suitecrm
     restart: unless-stopped
+    env_file: ../.env
     ports:
       - "8080:8080"
       - "8443:8443"
@@ -14,9 +15,12 @@ services:
     environment:
       - SUITECRM_DATABASE_HOST=mysql
       - SUITECRM_DATABASE_PORT_NUMBER=3306
-      - SUITECRM_DATABASE_USER=hasaki
-      - SUITECRM_DATABASE_PASSWORD=hasaki
-      - SUITECRM_DATABASE_NAME=hasaki
+      - SUITECRM_DATABASE_USER=${MYSQL_USER}
+      - SUITECRM_DATABASE_PASSWORD=${MYSQL_PASSWORD}
+      - SUITECRM_DATABASE_NAME=${MYSQL_DATABASE}
+      - SUITECRM_USERNAME=${SUITECRM_ADMIN_USER}
+      - SUITECRM_PASSWORD=${SUITECRM_ADMIN_PASSWORD}
+      - SUITECRM_SITE_URL=${SUITECRM_SITE_URL}
       - ALLOW_EMPTY_PASSWORD=no
     networks:
       - hasaki-network

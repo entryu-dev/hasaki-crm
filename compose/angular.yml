@@ -5,6 +5,7 @@ services:
     image: node:20-alpine
     container_name: hasaki-angular
     working_dir: /app
+    env_file: ../.env
     command: >
       sh -c "npm install -g @angular/cli@latest &&
              if [ ! -d "node_modules" ]; then npm install; fi &&
@@ -18,7 +19,7 @@ services:
     networks:
       - hasaki-network
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=${NODE_ENV}
 
 networks:
   hasaki-network:

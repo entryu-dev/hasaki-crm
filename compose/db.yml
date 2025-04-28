@@ -5,13 +5,9 @@ services:
     image: mysql:8.0
     container_name: hasaki-mysql
     restart: unless-stopped
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=hasaki
-      - MYSQL_USER=hasaki
-      - MYSQL_PASSWORD=hasaki
+    env_file: ../.env
     ports:
-      - "3306:3306"
+      - "33067:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ../suitecrm:/suitecrm
@@ -23,12 +19,13 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: hasaki-phpmyadmin
     restart: unless-stopped
+    env_file: ../.env
     ports:
       - "8081:80"
     environment:
       - PMA_HOST=mysql
       - PMA_PORT=3306
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - ../suitecrm:/suitecrm
     networks:
