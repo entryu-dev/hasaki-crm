@@ -1,4 +1,4 @@
-COMPOSE_FILES = -f compose/db.yml -p hasaki
+COMPOSE_FILES = -f compose/db.yml -f compose/api.yml -p hasaki
 KNOWN_TARGETS = install build start stop
 ARGS := $(filter-out $(KNOWN_TARGETS),$(MAKECMDGOALS))
 EXEC := /bin/bash
