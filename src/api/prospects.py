@@ -17,6 +17,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 @router.post("/prospects/bulk", response_model=BulkProspectResponse, status_code=status.HTTP_201_CREATED)
 async def create_bulk_prospects(data: BulkProspectCreate, db: Session = Depends(get_db)):
     """
