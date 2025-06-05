@@ -1,6 +1,9 @@
 
+import uuid
+from datetime import datetime
 from sqlalchemy import Column, String, Text, Integer, DateTime, Date, Boolean
 from sqlalchemy.ext.declarative import declarative_base
+
 Base = declarative_base()
 # Models
 class Prospect(Base):
@@ -46,4 +49,3 @@ class Prospect(Base):
     lead_id = Column(String(36))
     account_name = Column(String(150))
     campaign_id = Column(String(36))
-

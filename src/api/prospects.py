@@ -1,4 +1,3 @@
-
 from datetime import datetime
 import uuid
 import csv
@@ -92,7 +91,6 @@ async def create_bulk_prospects_csv(
     Expected CSV columns:
     - first_name
     - last_name
-    - email (optional)
     - phone_mobile (optional)
     - phone_work (optional)
     - company/account_name (optional)
@@ -137,7 +135,6 @@ async def create_bulk_prospects_csv(
                 column_mapping = {
                     'first_name': 'first_name',
                     'last_name': 'last_name',
-                    'email': 'email',
                     'phone_mobile': 'phone_mobile',
                     'phone_work': 'phone_work',
                     'phone_home': 'phone_home',
