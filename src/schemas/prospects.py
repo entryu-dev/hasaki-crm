@@ -1,4 +1,3 @@
-
 from typing import List, Optional, Dict, Any
 from datetime import datetime, date
 from pydantic import BaseModel
@@ -60,4 +59,3 @@ class BulkProspectResponse(BaseModel):
     count: int
     created_ids: List[str]
     errors: Optional[List[Dict[str, Any]]] = None
-

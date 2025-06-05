@@ -16,7 +16,7 @@ async def root():
 
 from .api import prospects
 api_router = APIRouter()
-api_router.include_router(prospects.router, tags=["Prospects"])
+api_router.include_router(prospects.router, prefix="/prospects", tags=["Prospects"])
 
 app.include_router(api_router)
 

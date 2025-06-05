@@ -1,1 +1,1 @@
-from .prospect import Prospect
+from .prospects import Prospect
